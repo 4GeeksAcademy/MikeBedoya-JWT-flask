@@ -13,12 +13,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			auth: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+			createUser: () => {
+				const raw = JSON.stringify({
+					"email": "test_user10@test.com",
+					"password": "110"
+				  });
+				  
+				  const requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				  };
+				  
+				  fetch("https://laughing-engine-r4r7qx5w7qv72pxj-3001.app.github.dev/api/signup", requestOptions)
+					.then((response) => response.text())
+					.then((result) => console.log(result))
 			},
 
 			getMessage: async () => {
