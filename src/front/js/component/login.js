@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 
-export const Signup = () => {
+export const Login = () => {
     const { store, actions } = useContext(Context);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Usuario agregado', { email, password});
-        actions.createUser(email, password);
+        console.log('Estas logueado', { email, password});
+        actions.login(email, password)
+               
     };
 
     return (
@@ -19,13 +20,13 @@ export const Signup = () => {
                 <div className="d-flex align-items-center mt-3 bg-body-tertiary">
                     <div className="form-signin w-100 m-auto">
                         <form onSubmit={handleSubmit}>
-                            <h1 className="h3 mb-3 fw-normal"><strong>Please sign up</strong></h1>
+                            <h1 className="h3 mb-3 fw-normal"><strong>Please Login</strong></h1>
 
-                            <div className="form-floating">
+                            <div className="form-floating mb-2">
                                 <input
                                     type="email"
                                     className="form-control"
-                                    id="floatingInput"
+                                    id="floatingInputlogin"
                                     placeholder="name@example.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -37,14 +38,14 @@ export const Signup = () => {
                                 <input
                                     type="password"
                                     className="form-control"
-                                    id="floatingPassword"
+                                    id="floatingPasswordlogin"
                                     placeholder="Password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <label htmlFor="floatingPassword">Password</label>
                             </div>
-                            <button className="btn btn-primary w-100 py-2" type="submit">Sign up</button>
+                            <button className="btn btn-primary w-100 py-2" type="submit">Login</button>
                         </form>
                     </div>
                 </div>
