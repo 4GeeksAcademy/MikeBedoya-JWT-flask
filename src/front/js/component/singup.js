@@ -7,13 +7,14 @@ export const SignUp = () => {
     const { store, actions } = useContext(Context);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const Navigate = useNavigate()
+    const navigate = useNavigate();
 
-    
-    const handleSignup = (e) => {
-        console.log('has creado tu usuario', { email, password});
-        Navigate('/demo')
-        actions.signup(email, password)          
+    const handleSignup = async (e) => {
+        console.log('Has creado tu usuario', { email, password });
+
+        await actions.signup(email, password);
+
+        navigate('/login');
     };
 
     return (
@@ -47,7 +48,7 @@ export const SignUp = () => {
                                 />
                                 <label htmlFor="floatingPassword">Password</label>
                             </div>
-                            <button onClick={() =>handleSignup()}className="btn btn-primary w-100 py-2" type="submit">Sign up</button>
+                            <button onClick={() => handleSignup()} className="btn btn-primary w-100 py-2" type="submit">Sign up</button>
                         </form>
                     </div>
                 </div>

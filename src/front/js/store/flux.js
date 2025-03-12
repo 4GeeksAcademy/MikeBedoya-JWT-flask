@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 			
-				fetch("https://laughing-engine-r4r7qx5w7qv72pxj-3001.app.github.dev/api/signup", requestOptions)
+				fetch(process.env.BACKEND_URL + '/api/signup', requestOptions)
 				.then((response) => {
 					if (!response.ok) {
 						throw new Error("Error al crear el usuario. Verifica los datos o intenta más tarde.");
